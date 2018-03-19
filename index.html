@@ -10,7 +10,7 @@
 Enter the text you want to translate:&nbsp;&nbsp;<input id="user_input" type="text" name="">
 <button type="button" id="result" class="btn btn-primary">Submit</button>
 
-<div></div>
+<div id="output"></div>
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
@@ -20,8 +20,8 @@ Enter the text you want to translate:&nbsp;&nbsp;<input id="user_input" type="te
 	$("button").click(function(){
 		var API = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180319T173604Z.b3d8f948e28bf7d7.5778e4b568d3ea2aad09a6b970d015f5dd01c1c1&text="+user_input.value+"&lang=en-hi&format=text";
     $.ajax({url: API, success: function(result){
-    	console.log(result);
-        $("#result").html(result);
+    	console.log(result.text[0]);
+        $("#output").append(result.text[0]);
     }});
 });	
 	</script>
